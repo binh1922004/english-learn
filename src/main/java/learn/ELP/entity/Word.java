@@ -1,11 +1,9 @@
 package learn.ELP.entity;
 
+
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
-
-import java.time.LocalDate;
-import java.util.Set;
 
 @Entity
 @Data
@@ -13,16 +11,15 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Users {
+public class Word {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     String id;
-    String username;
-    String password;
-    String email;
-    String name;
-    LocalDate dob;
+    String word;
+    String definition;
+    String example;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
-    Set<Word> wordList;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    Users user;
 }

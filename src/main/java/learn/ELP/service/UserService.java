@@ -20,8 +20,6 @@ public class UserService {
     UserMapper userMapper;
 
     public UserResponse createUser(UserCreationRequest request) {
-
-
         Users user = userMapper.toUser(request);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         UserResponse userResponse = userMapper.toUserResponse(user);
