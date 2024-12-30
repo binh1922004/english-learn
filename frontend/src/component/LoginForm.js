@@ -13,7 +13,7 @@ export default class LoginForm extends React.Component{
             onRegister: props.onRegister
         };
     };
-    onChangHandler = (event) => {
+    onChangeHandler = (event) => {
         const name = event.target.name;
         const value = event.target.value;
         this.setState({[name]: value});
