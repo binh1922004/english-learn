@@ -28,11 +28,11 @@ export default class AppContent extends React.Component{
             "POST",
             "/login",
             {
-                login: username,
+                username: username,
                 password: password
             }).then(
             (response) => {
-                setAuthHeader(response.data.token);
+                setAuthHeader(response.data.result.token);
                 this.setState({componentToShow: "messages"});
             }).catch(
             (error) => {

@@ -1,4 +1,4 @@
-package learn.ELP.dto.respone;
+package learn.ELP.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;
