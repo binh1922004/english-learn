@@ -5,6 +5,7 @@ import lombok.experimental.NonFinal;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
@@ -23,12 +24,15 @@ public class SecurityConfig {
     @NonFinal
     @Value("${jwt.signerKey}")
     protected String signerKey;
+
+    private final String[] PUBLIC_ENDPOINT = {"/login", "/register"};
+
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests(request -> {
-            request.requestMatchers("/login").permitAll()
-                    .anyRequest().authenticated();
-        });
+        http.authorizeHttpRequests(request ->
+                request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINT).permitAll()
+                        .anyRequest().authenticated());
+
         http.oauth2ResourceServer(oauth2 ->
                 oauth2.jwt(jwtConfigurer -> jwtConfigurer.decoder(jwtDecoder())));
 

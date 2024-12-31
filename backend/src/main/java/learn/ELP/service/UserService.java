@@ -20,9 +20,14 @@ public class UserService {
     UserMapper userMapper;
 
     public UserResponse createUser(UserCreationRequest request) {
+
+        if (usersRepository.existsByUsername(request.getUsername())) {
+            throw new RuntimeException("Username already exists");
+        }
+
         Users user = userMapper.toUser(request);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        UserResponse userResponse = userMapper.toUserResponse(user);
+
         return userMapper.toUserResponse(usersRepository.save(user));
     }
 }
