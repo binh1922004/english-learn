@@ -4,9 +4,9 @@ server:
     context-path: /elp
 spring:
   datasource:
-    url: "jdbc:mysql://localhost:3306/elp"
-    username: root
-    password: 10040109
+    url: "jdbc:mysql://mysql-11d76882-binhball.k.aivencloud.com:11528/defaultdb"
+    username: avnadmin
+    password: AVNS_MyhVYKtj6VagnO9YkUo
   jpa:
     hibernate:
       ddl-auto: update
