@@ -42,20 +42,20 @@ export default class AppContent extends React.Component{
         );
     };
 
-    onRegister = (event, firstName, lastName, username, password) => {
+    onRegister = (event, username, password, name, email, dob) => {
         event.preventDefault();
         request(
             "POST",
             "/register",
             {
-                firstName: firstName,
-                lastName: lastName,
-                login: username,
-                password: password
+                username: username,
+                password: password,
+                email: email,
+                name: name,
+                dob: dob
             }).then(
             (response) => {
-                setAuthHeader(response.data.token);
-                this.setState({componentToShow: "messages"});
+                this.setState({componentToShow: "welcome"});
             }).catch(
             (error) => {
                 setAuthHeader(null);
