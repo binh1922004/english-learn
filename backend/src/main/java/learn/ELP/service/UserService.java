@@ -30,4 +30,8 @@ public class UserService {
 
         return userMapper.toUserResponse(usersRepository.save(user));
     }
+
+    public Users findByUsername(String username) {
+        return usersRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Username not found"));
+    }
 }
