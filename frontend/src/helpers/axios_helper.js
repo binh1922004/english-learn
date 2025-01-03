@@ -12,8 +12,8 @@ export const setAuthHeader = (token) => {
         window.localStorage.removeItem("auth_token");
     }
 };
-// axios.defaults.baseURL = 'http://localhost:8080/elp';
-axios.defaults.baseURL = 'https://english-learn-production.up.railway.app/elp';
+axios.defaults.baseURL = 'http://localhost:8080/elp';
+// axios.defaults.baseURL = 'https://english-learn-production.up.railway.app/elp';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
 export const request = (method, url, data) => {
