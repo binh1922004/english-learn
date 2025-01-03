@@ -1,16 +1,15 @@
 import './App.css';
 import AppContent from "./AppContent";
+import Home from "./Home";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
-      <div className="App">
-          <div className="container-fluid">
-              <div className="row">
-                  <div className="col">
-                      <AppContent/>
-                  </div>
-              </div>
-          </div>
-      </div>
+      <Router>
+          <Routes>
+              <Route path="/" element={<AppContent/>} />
+              <Route path="/home" element={<Home/>} />
+          </Routes>
+      </Router>
   );
 }
 

@@ -4,6 +4,7 @@ import LoginForm from "./LoginForm";
 import WelcomeContent from "./WelcomContent";
 import AuthContent from "./AuthContent";
 import {request, setAuthHeader} from "../helpers/axios_helper"
+import { Navigate } from "react-router-dom";
 export default class AppContent extends React.Component{
 
     constructor(props) {
@@ -33,7 +34,7 @@ export default class AppContent extends React.Component{
             }).then(
             (response) => {
                 setAuthHeader(response.data.result.token);
-                this.setState({componentToShow: "messages"});
+
             }).catch(
             (error) => {
                 setAuthHeader(null);
