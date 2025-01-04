@@ -8,6 +8,7 @@ import learn.ELP.repository.UsersRepository;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -33,5 +34,11 @@ public class UserService {
 
     public Users findByUsername(String username) {
         return usersRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Username not found"));
+    }
+
+    public UserResponse getMyInfo(){
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        Users user = usersRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Username not found"));
+        return userMapper.toUserResponse(user);
     }
 }
