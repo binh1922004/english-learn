@@ -1,11 +1,12 @@
-import * as React from "react";
+import React, {Component} from "react";
 import Buttons from "./Buttons";
 import LoginForm from "./LoginForm";
 import WelcomeContent from "./WelcomContent";
 import AuthContent from "./AuthContent";
 import {request, setAuthHeader} from "../helpers/axios_helper"
-import { Navigate } from "react-router-dom";
-export default class AppContent extends React.Component{
+import { useNavigate } from 'react-router-dom';
+
+class AppContent extends Component{
 
     constructor(props) {
         super(props);
@@ -33,8 +34,9 @@ export default class AppContent extends React.Component{
                 password: password
             }).then(
             (response) => {
-                setAuthHeader(response.data.result.token);
-
+                setAuthHeader(response.data.result.token)
+                this.setState({componentToShow: "login"})
+                this.props.navigate('/home')
             }).catch(
             (error) => {
                 setAuthHeader(null);
@@ -78,4 +80,10 @@ export default class AppContent extends React.Component{
             </>
         )
     }
+}
+
+// HOC để inject navigate vào props
+export default function WithNavigate(props) {
+    const navigate = useNavigate();
+    return <AppContent {...props} navigate={navigate} />;
 }

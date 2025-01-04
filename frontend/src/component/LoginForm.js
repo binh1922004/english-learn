@@ -1,7 +1,7 @@
-import * as React from "react";
+import React, { Component } from "react";
 import classNames from 'classnames';
 
-export default class LoginForm extends React.Component{
+export default class LoginForm extends Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -23,10 +23,12 @@ export default class LoginForm extends React.Component{
 
     onSubmitLogin = (e) => {
         this.state.onLogin(e, this.state.login, this.state.password);
+
     };
 
     onSubmitRegister = (e) => {
         this.state.onRegister(e, this.state.login, this.state.password, this.state.name, this.state.email, this.state.dob)
+
     };
     render() {
         return (
