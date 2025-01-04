@@ -1,6 +1,6 @@
 import * as React from 'react';
-
 import { request, setAuthHeader } from '../helpers/axios_helper';
+import WordModal from "./WordModal";
 
 export default class Home extends React.Component{
     constructor(props) {
@@ -8,6 +8,7 @@ export default class Home extends React.Component{
         this.state = {
             code: 0,
             name: "",
+            active: "false",
         }
     }
 
@@ -39,13 +40,18 @@ export default class Home extends React.Component{
         return (
             <>
                 <header className="d-flex justify-content-between align-items-center bg-light p-3">
-                    <span onClick={this.addWord} className="fw-bold text-dark">{this.state.name}</span>
+                    <span className="fw-bold text-dark">{this.state.name}</span>
                     <span className="fw-bold text-dark">ELP</span>
                 </header>
                 <div className="d-flex flex-column align-items-center justify-content-center vh-100">
-                    <button className="btn btn-primary mb-3" onClick="addVocabulary()">Thêm từ vựng</button>
+                    <div>
+                        <WordModal />
+                        <br/>
+                    </div>
+                    {/*<button className="btn btn-primary mb-3" onClick={() => this.setState({active: "true"})}>Thêm từ vựng</button>*/}
                     <button className="btn btn-secondary" onClick="practice()">Luyện tập</button>
                 </div>
+
             </>
         )
     }
