@@ -31,4 +31,11 @@ public class WordController {
                 .result(wordService.getAllWords())
                 .build();
     }
+
+    @GetMapping("/random")
+    public ApiRespone<List<WordRespone>> getRandomWords() {
+        return ApiRespone.<List<WordRespone>>builder()
+                .result(wordService.getRandomWords())
+                .build();
+    }
 }

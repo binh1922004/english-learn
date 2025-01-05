@@ -37,4 +37,11 @@ public class WordService {
 
         return listWord.stream().map(wordMapper::wordToWordRespone).collect(Collectors.toList());
     }
+
+    public List<WordRespone> getRandomWords(){
+        var username = SecurityContextHolder.getContext().getAuthentication().getName();
+        List<Word> listWord = wordRepository.findRandomWord(username);
+
+        return listWord.stream().map(wordMapper::wordToWordRespone).collect(Collectors.toList());
+    }
 }
