@@ -1,17 +1,18 @@
 import './App.css';
 import AppContent from "./AppContent";
 import Home from "./Home";
-import {Routes, Route, BrowserRouter} from "react-router-dom";
 import Practice from "./Practice"
+import { HashRouter, Routes, Route } from "react-router-dom";
+
 function App() {
     return (
-        <BrowserRouter>
+        <HashRouter>
             <Routes>
-                <Route path="/english-learn/home" element={<Home/>} />
-                <Route path="/english-learn" element={<AppContent/>} />
-                <Route path="/english-learn/practice" element={<Practice/>} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/" element={<AppContent />} />
+                <Route path="/practice" element={<Practice />} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     );
 }
 
