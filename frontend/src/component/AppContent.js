@@ -36,7 +36,7 @@ class AppContent extends Component{
             (response) => {
                 setAuthHeader(response.data.result.token)
                 this.setState({componentToShow: "login"})
-                this.props.navigate('/home')
+                this.props.navigate('/english-learn/home')
             }).catch(
             (error) => {
                 setAuthHeader(null);
