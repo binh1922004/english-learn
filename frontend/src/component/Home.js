@@ -33,9 +33,7 @@ export default class Home extends React.Component{
                 }
             );
     };
-    addWord = () =>{
 
-    }
     render() {
         return (
             <>
@@ -49,7 +47,7 @@ export default class Home extends React.Component{
                         <br/>
                     </div>
                     {/*<button className="btn btn-primary mb-3" onClick={() => this.setState({active: "true"})}>Thêm từ vựng</button>*/}
-                    <button className="btn btn-secondary" onClick="practice()">Luyện tập</button>
+                    <a href={"/practice"}>Luyện tập</a>
                 </div>
 
             </>
