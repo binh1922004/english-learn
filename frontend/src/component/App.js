@@ -6,7 +6,7 @@ import { HashRouter, Routes, Route } from "react-router-dom";
 
 function App() {
     return (
-        <HashRouter>
+        <HashRouter basename={"english-learn"}>
             <Routes>
                 <Route path="/home" element={<Home />} />
                 <Route path="/" element={<AppContent />} />
