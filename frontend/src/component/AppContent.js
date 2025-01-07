@@ -52,8 +52,7 @@ class AppContent extends Component{
         request(
             "POST",
             "/register",
-            {
-                username: username,
+            {                username: username,
                 password: password,
                 email: email,
                 name: name,
