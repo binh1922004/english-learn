@@ -1,6 +1,8 @@
-import React, { useState} from "react";
-import {request} from "../helpers/axios_helper"
-const Practice = ()=> {
+import * as React from 'react';
+import { request, setAuthHeader } from '../helpers/axios_helper';
+import {useState} from "react";
+
+const Pronounce = () => {
     const [vocabulary, setVocabulary] = useState([])
     const [currentIndex, setCurrentIndex] = useState(0)
     const [userAnswer, setUserAnswer] = useState("")
@@ -20,6 +22,17 @@ const Practice = ()=> {
             }
         )
         setIsSendRequest(true)
+    }
+
+    function speakText(text) {
+        if ('speechSynthesis' in window) {
+            const synth = window.speechSynthesis;
+            const utterance = new SpeechSynthesisUtterance(text);
+            utterance.lang = 'en-US'; // Ngôn ngữ tiếng Anh (Mỹ)
+            synth.speak(utterance);
+        } else {
+            alert('Trình duyệt của bạn không hỗ trợ phát âm thanh.');
+        }
     }
 
     const handleSubmit = () => {
@@ -92,8 +105,15 @@ const Practice = ()=> {
             <h1 className="text-center">Luyện tập từ vựng</h1>
             <div className="card mx-auto mt-3" style={{maxWidth: "500px"}}>
                 <div className="card-body">
-                    <h5 className="card-title">Hãy nhập từ tiếng Anh cho định nghĩa:</h5>
-                    <p className="card-text text-primary"><strong>{currentWord.definition}</strong></p>
+                    <h5 className="card-title">Hãy lắng nghe và nhập từ đúng:</h5>
+                    <button
+                        className="btn btn-light ms-2"
+                        onClick={() => speakText(currentWord.word)}
+                        aria-label="Phát âm"
+                        title="Phát âm"
+                    >
+                        <i className="fas fa-volume-up"></i> {/* Icon loa */}
+                    </button>
                     <input
                         type="text"
                         className="form-control mb-3"
@@ -118,4 +138,4 @@ const Practice = ()=> {
     );
 }
 
-export default Practice;
+export default Pronounce;

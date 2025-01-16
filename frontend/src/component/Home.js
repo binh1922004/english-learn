@@ -47,7 +47,9 @@ export default class Home extends React.Component{
                         <br/>
                     </div>
                     {/*<button className="btn btn-primary mb-3" onClick={() => this.setState({active: "true"})}>Thêm từ vựng</button>*/}
-                    <a href={"/practice"}>Luyện tập</a>
+                    <a className="btn btn-secondary" href={"/practice"}>Luyện tập từ vựng</a>
+                    <br/>
+                    <a className="btn btn-outline-primary" href={"/pronounce"}>Luyện tập phát âm</a>
                 </div>
 
             </>
