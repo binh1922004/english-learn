@@ -68,16 +68,21 @@ class AppContent extends Component{
         );
     };
     render() {
+        // return (
+        //     <>
+        //         <Buttons
+        //             login={this.login}
+        //             logout={this.logout}
+        //         />
+        //
+        //         {this.state.componentToShow === "welcome" && <WelcomeContent /> }
+        //         {this.state.componentToShow === "login" && <LoginForm onLogin={this.onLogin} onRegister={this.onRegister} />}
+        //         {this.state.componentToShow === "messages" && <AuthContent />}
+        //     </>
+        // )
         return (
             <>
-                <Buttons
-                    login={this.login}
-                    logout={this.logout}
-                />
-
-                {this.state.componentToShow === "welcome" && <WelcomeContent /> }
-                {this.state.componentToShow === "login" && <LoginForm onLogin={this.onLogin} onRegister={this.onRegister} />}
-                {this.state.componentToShow === "messages" && <AuthContent />}
+                <h1>Dit con me m Chau Long</h1>
             </>
         )
     }

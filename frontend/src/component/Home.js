@@ -52,11 +52,7 @@ class Home extends React.Component{
         //
         //     </>
         // )
-        return (
-            <>
-                <h1>Dit con me m Chau Long</h1>
-            </>
-        )
+
     }
 }
 
