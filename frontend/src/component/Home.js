@@ -36,20 +36,25 @@ class Home extends React.Component{
     };
 
     render() {
+        // return (
+        //     <>
+        //         <header className="d-flex justify-content-between align-items-center bg-light p-3">
+        //             <span className="fw-bold text-dark">{this.state.name}</span>
+        //             <span className="fw-bold text-dark">ELP</span>
+        //         </header>
+        //         <div className="d-flex flex-column align-items-center justify-content-center vh-100">
+        //             <div>
+        //                 <WordModal />
+        //                 <br/>
+        //             </div>
+        //             <button className="btn btn-primary mb-3" onClick={() => this.props.navigate('/practice')}>Luyện tập</button>
+        //         </div>
+        //
+        //     </>
+        // )
         return (
             <>
-                <header className="d-flex justify-content-between align-items-center bg-light p-3">
-                    <span className="fw-bold text-dark">{this.state.name}</span>
-                    <span className="fw-bold text-dark">ELP</span>
-                </header>
-                <div className="d-flex flex-column align-items-center justify-content-center vh-100">
-                    <div>
-                        <WordModal />
-                        <br/>
-                    </div>
-                    <button className="btn btn-primary mb-3" onClick={() => this.props.navigate('/practice')}>Luyện tập</button>
-                </div>
-
+                <h1>Dit con me m Chau Long</h1>
             </>
         )
     }
