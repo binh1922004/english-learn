@@ -24,6 +24,8 @@ class AppContent extends Component{
         setAuthHeader(null);
     };
     onLogin = (e, username, password) => {
+        // this.props.navigate('/home')
+
         //tat cac hoat dong tu dong cua trinh duyet
         e.preventDefault();
         request(
@@ -50,8 +52,7 @@ class AppContent extends Component{
         request(
             "POST",
             "/register",
-            {
-                username: username,
+            {                username: username,
                 password: password,
                 email: email,
                 name: name,

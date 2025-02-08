@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { request, setAuthHeader } from '../helpers/axios_helper';
+import { request} from '../helpers/axios_helper';
 import {useState} from "react";
 
 const Pronounce = () => {

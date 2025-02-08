@@ -77,7 +77,7 @@ const Practice = ()=> {
                     </ul>
                 </div>
                 <div className="container mt-5">
-                    <button className="btn-primary"> Back home</button>
+                    <a href="/english-learn/home" className="btn-primary"> Back home</a>
                 </div>
             </>
 

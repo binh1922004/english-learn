@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { request, setAuthHeader } from '../helpers/axios_helper';
 import WordModal from "./WordModal";
+import { useNavigate } from 'react-router-dom';
 
-export default class Home extends React.Component{
+class Home extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
@@ -46,13 +47,16 @@ export default class Home extends React.Component{
                         <WordModal />
                         <br/>
                     </div>
-                    {/*<button className="btn btn-primary mb-3" onClick={() => this.setState({active: "true"})}>Thêm từ vựng</button>*/}
-                    <a className="btn btn-secondary" href={"/practice"}>Luyện tập từ vựng</a>
-                    <br/>
-                    <a className="btn btn-outline-primary" href={"/pronounce"}>Luyện tập phát âm</a>
+                    <button className="btn btn-primary mb-3" onClick={() => this.props.navigate('/practice')}>Luyện tập</button>
                 </div>
 
             </>
         )
     }
+}
+
+// HOC để inject navigate vào props
+export default function WithNavigate(props) {
+    const navigate = useNavigate();
+    return <Home {...props} navigate={navigate} />;
 }

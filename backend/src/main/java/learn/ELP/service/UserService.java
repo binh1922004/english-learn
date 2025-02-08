@@ -41,4 +41,9 @@ public class UserService {
         Users user = usersRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Username not found"));
         return userMapper.toUserResponse(user);
     }
+
+    public String findEmailByUsername(String username) {
+        Users users = usersRepository.findByUsername(username).orElseThrow(() -> new RuntimeException("Username not found"));
+        return users.getEmail();
+    }
 }
