@@ -7,6 +7,7 @@ import lombok.experimental.FieldDefaults;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -22,11 +23,29 @@ public class OtpService {
 
     public String generateOtp(String userName) {
 
-        String otp = String.valueOf(100000 + random.nextInt(900000)); // 6-digit OTP
-        String key = OTP_PREFIX + userName;
-        //save otp to redis
-        redisTemplate.opsForValue().set(key, otp, OTP_EXPIRY_MINUTES, TimeUnit.MINUTES);
+        boolean isSent = false;
+        try{
+            String otp = String.valueOf(100000 + random.nextInt(900000)); // 6-digit OTP
+            String key = OTP_PREFIX + userName;
+            //save otp to redis
+            redisTemplate.opsForValue().set(key, otp, OTP_EXPIRY_MINUTES, TimeUnit.MINUTES);
+            return otp;
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
 
-        return otp;
+        return null;
+    }
+
+
+    public boolean verifyOtp(String userName, String otp) {
+        String key = OTP_PREFIX + userName;
+        String storedOtp = redisTemplate.opsForValue().get(key);
+        if (storedOtp != null && storedOtp.equals(otp)) {
+            redisTemplate.delete(key);
+            return true;
+        }
+        return false;
     }
 }
