@@ -1,6 +1,8 @@
 package learn.ELP.controller;
 
 import learn.ELP.dto.ApiRespone;
+import learn.ELP.dto.request.OtpRequest;
+import learn.ELP.dto.request.OtpValidateRequest;
 import learn.ELP.service.OtpService;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -15,16 +17,16 @@ public class OtpController {
     OtpService otpService;
     
     @GetMapping("/get")
-    public ApiRespone<String> getOtp(@RequestBody String username) {
-        return ApiRespone.<String>builder()
-                .result(otpService.generateOtp(username))
+    public ApiRespone<Boolean> getOtp(@RequestBody OtpRequest otpRequest) {
+        return ApiRespone.<Boolean>builder()
+                .result(otpService.sendOtp(otpRequest))
                 .build();
     }
     
     @PostMapping("/verify")
-    public ApiRespone<Boolean> verifyOtp(@RequestParam String username, @RequestParam String otp) {
+    public ApiRespone<Boolean> verifyOtp(@RequestBody OtpValidateRequest otpValidateRequest) {
         return ApiRespone.<Boolean>builder()
-                .result(otpService.verifyOtp(username, otp))
+                .result(otpService.validateOtp(otpValidateRequest))
                 .build();
     }
 }

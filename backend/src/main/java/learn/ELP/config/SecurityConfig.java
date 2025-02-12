@@ -25,13 +25,13 @@ public class SecurityConfig {
     @Value("${jwt.signerKey}")
     protected String signerKey;
 
-    private final String[] PUBLIC_ENDPOINT = {"/login", "/register"};
+    private final String[] PUBLIC_ENDPOINT = {"/login", "/register", "/otp/**"};
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(request ->
-                request.requestMatchers(HttpMethod.POST, PUBLIC_ENDPOINT).permitAll()
-//                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                request.requestMatchers(PUBLIC_ENDPOINT).permitAll()
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .anyRequest().authenticated());
 
         http.oauth2ResourceServer(oauth2 ->

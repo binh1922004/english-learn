@@ -3,6 +3,14 @@ server:
   servlet:
     context-path: /elp
 spring:
+  mail:
+    username: hcmutesending@gmail.com
+    password: nbis htol vsck fyav
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+    host: smtp.gmail.com
+    port: 587
   datasource:
     url: "jdbc:mysql://localhost:3306/elp"
     username: root
